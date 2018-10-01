@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "bison",
+    "database": "pod",
     "host": "localhost",
     "dialect": "mysql"
   },

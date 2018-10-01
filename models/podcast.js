@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Podcasts = sequelize.define("podcasts", {
+    const Podcast = sequelize.define("Podcast", {
         pod_link: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -15,12 +15,13 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-    Podcasts.associate = models => {
-        Podcast.belongsTo(models.Users, {
+
+    Podcast.associate = models => {
+        Podcast.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         })
     }
-    return Podcasts;
+    return Podcast;
 };
