@@ -1,5 +1,5 @@
-const authConfig = require('./config/config'),
-  express = require('express'),
+require('.dotenv').config();
+express = require('express'),
   passport = require('passport'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
@@ -16,7 +16,12 @@ passport.deserializeUser(function (obj, done) {
 passport.use(new GoogleStrategy(
   // Use the API access settings stored in ./config/auth.json. You must create
   // an OAuth 2 client ID and secret at: https://console.developers.google.com
-  authConfig.google,
+  {
+    clientID: process.env.PASSPORT_CLIENT_ID,
+    clientSecret: process.env.PASSPORT_SECRET,
+    callbackURL: process.env.PASSPORT_CALLBACKURL,
+    passReqToCallback: true
+  },
 
   function (accessToken, refreshToken, profile, done) {
 
@@ -28,7 +33,13 @@ passport.use(new GoogleStrategy(
 ));
 
 
+//Everything above can be its own file, then there is comments below where we are gonna have to separate what
+
 // Express 4 boilerplate
+// ------------------------------------------------------
+// ------------------------------------------------------
+// ------------------------------------------------------
+// this stuff can go into the server file
 
 var app = express();
 app.set('view engine', 'hbs');
@@ -50,9 +61,15 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
+// --------------------------------------------------------
+// --------------------------------------------------------
+// --------------------------------------------------------
 
 // Application routes
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// this stuff can go into a authRoutes file
 app.get('/', function (req, res) {
   res.render('index', {
     user: req.user
@@ -98,13 +115,18 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// yeah this will have to go
 app.listen(process.env.PORT || 4200, function () {
   console.log("Listening...");
 });
 
 
 // Simple route middleware to ensure user is authenticated.
-function ensureAuthenticated(req, res, next) {
+function ensureAuthenticated (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }

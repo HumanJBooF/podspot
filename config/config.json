@@ -17,10 +17,5 @@
   "production": {
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
-  },
-  "google": {
-    "clientID": "880300718600-5k6a3ithtblbv1msidetufni0tas64a1.apps.googleusercontent.com",
-    "clientSecret": "MHupsr0aRNrKxTBaYL8P2b",
-    "callbackURL": "http://192.168.15.111:4200/auth/google/callback"
   }
 }
