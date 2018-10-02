@@ -1,28 +1,31 @@
-var db = require("../models");
+const db = require("../models");
+const podSearch = require('podcast-search');
 
-// Everything is commented out because we need to create our own database and figure out what routes we are using...
-// the commented out stuff is the basic set up we need but it will be easier once we get the database named and set up
 const routes = (app) => {
-  // Get all examples
-  // app.get("/api/examples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
+  app.get('/', (req, res) => {
+    res.render('index')
+  })
 
-  // // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+  app.post('/search/term', (req, res) => {
+    let searches = req.body.term
+    console.log(searches);
+    getPod(searches)
+  })
 
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
 };
+
+//getting data back in the console... this is just URL links to the podcast but we can also pull down title, image, logo, descriptions 
+//and whatever else we need just gotta render it to handlebars
+const getPod = (searchTerm) => {
+  let dataArray = []
+  podSearch.search(searchTerm)
+    .then(data => {
+      data.forEach(descript => {
+        dataArray.push({ data: descript.url });
+      })
+      console.log(dataArray)
+      return dataArray;
+    })
+}
 
 module.exports = routes;
