@@ -1,19 +1,29 @@
 
+const $searchField = $('#searchBar');
+const $searchButton = $('#searchButton');
 
-// THIS IS ALL COMMENTED OUT BECAUSE WE NEED TO MAKE OUR OWN, 
-// THE STRUCTURE IS PRETTY MUCH WHAT WE WILL BE DOING BUT IT WILL 
-// BE A LOT LESS CONFUSING IF WE JUST START FROM NOTHING RATHER THEN TRYING TO REPLACE THINGS
+const formSubmit = (event) => {
+    event.preventDefault(event);
+
+    if (!$searchField.val().trim()) {
+        return;
+    }
+
+    sendData({
+        term: $searchField
+            .val()
+            .trim()
+    })
+};
+
+const sendData = data => {
+    $.post('/search/term', data)
+        .then(data);
+    console.log(data);
+}
 
 
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------//
-
-
+$searchButton.on('click', formSubmit);
 // // Get references to page elements
 // var $exampleText = $("#example-text");
 // var $exampleDescription = $("#example-description");
