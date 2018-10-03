@@ -4,3 +4,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* hides chat box until it is opened, and display it over the other content */
+#chatBox{
+
+    visibility: visible;
+    z-index: 2;
+
+}

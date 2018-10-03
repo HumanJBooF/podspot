@@ -1,9 +1,48 @@
 
 
+//Peter's chat code
+var $chatBox = $("#chatBox");
+var $openChat = $("#openChat");
+var $sendMessage = $("#sendMessage");
+var $closeChat = $("#closeChat");
+
+
+//Opens Chat box
+$openChat.on("click", handleOpenChat);
+
+var handleOpenChat = function () {
+
+  $chatBox.attr("style", "visiblility: visible;");
+
+}
+
+//emits message typed into #messageText to #messageBoard through socket_io.js
+$sendMessage.on("click", handleSendMessage);
+
+var handleSendMessage = function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#messageText').val());
+      $('#messageText').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messageBoard').append($('<li>').text(msg));
+    });
+  }
+
+//Closes Chat box
+$closeChat.on("click", handleCloseChat);
+
+var handleCloseChat = function () {
+ 
+    $chatBox.hide();
+
+}
+
 // THIS IS ALL COMMENTED OUT BECAUSE WE NEED TO MAKE OUR OWN, 
 // THE STRUCTURE IS PRETTY MUCH WHAT WE WILL BE DOING BUT IT WILL 
 // BE A LOT LESS CONFUSING IF WE JUST START FROM NOTHING RATHER THEN TRYING TO REPLACE THINGS
-
 
 // ---------------------------------------------------------------------------------------------//
 // ---------------------------------------------------------------------------------------------//
@@ -15,6 +54,7 @@
 
 
 // // Get references to page elements
+
 // var $exampleText = $("#example-text");
 // var $exampleDescription = $("#example-description");
 // var $submitBtn = $("#submit");
