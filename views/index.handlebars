@@ -1,13 +1,16 @@
 <div class="nav"><a class="waves-effect waves-light btn-large" id="loginButton">Login</a></div>
 <div id="home">
   <div class="container">
-    <div class="title">Unknown Podject</div>
+    <div class="title">Podject: Unknown</div>
    <form class="col s12">
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12" id="searchDiv">
+          <span>
           <textarea id="searchBar" class="materialize-textarea" placeholder="Search"></textarea>
-          
+          </span>
+          <span>
           <a class="waves-effect waves-light btn-large" id="searchButton">Search</a>
+          </span>
         </div>
       </div>
       <div id="chatBox" class="container">
@@ -35,6 +38,7 @@
   </ul>
   </div>
 
+<<<<<<< HEAD
   <footer class="page-footer">
     <div class="container">
       <div class="row">
@@ -53,3 +57,11 @@
 
 
   <script src="/js/index.js"></script>
+=======
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
+<script src="/js/index.js"></script>
+{{!-- link for google auth  --}}
+<a href="/auth/google">Login with Google</a>
+>>>>>>> 9e7dd2cb81ce59f64a0d9e09644ee2ab73439257
