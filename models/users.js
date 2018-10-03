@@ -9,8 +9,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     User.associate = models => {
-        User.hasMany(models.Review)
-        User.hasMany(models.Podcast)
+        User.hasMany(models.Review, {
+            onDelete: 'cascade'
+        });
+        User.hasMany(models.Podcast, {
+            onDelete: 'cascade'
+        });
     }
     return User;
 };
