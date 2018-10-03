@@ -1,4 +1,4 @@
-#home{
+.home{
     max-width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -6,7 +6,9 @@
 
 .nav{
     margin-top: 20px;
-    margin-right: 20px;
+    height: 75px;
+    border-bottom: 3px solid rgb(196, 190, 190);
+    
 
 }
 .container{
@@ -17,25 +19,37 @@
     text-align: center;
 }
 
+#searchDiv{
+    width: 100%;
+}
+
 #searchButton{
-    width:100%;
-    margin-top: 3px;
-    height: 35px;
-    line-height: 35px;
+    padding: 0;
+    width:14.5%;
+    height: 45px;
+    line-height: 45px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: none;
 }
 
 #searchBar{
     color: black;
+    height: 29px;
     padding: 6px;
+    padding-left: 10px;
     padding-top: 10px;
     float:left;
     border:0;
     background-color:rgb(236, 231, 231);
-    margin-top: 10px;
-    margin-right: 20px;
-    width: 100%;
+    width: 85.5%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #loginButton{
     float: right;
+    margin-right: 20px;
 }
