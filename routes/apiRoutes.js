@@ -20,8 +20,14 @@ const getPod = (searchTerm) => {
   let dataArray = []
   podSearch.search(searchTerm)
     .then(data => {
-      data.forEach(descript => {
-        dataArray.push({ data: descript.url });
+      data.forEach(pods => {
+        dataArray.push({
+          title: pods.title,
+          descript: pods.description,
+          url: pods.url,
+          logo: pods.logo_url,
+          website: pods.website
+        });
       })
       console.log(dataArray)
       return dataArray;
