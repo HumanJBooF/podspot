@@ -111,6 +111,12 @@ body{
     border-bottom-left-radius: 5px;
 }
 
+textarea:focus {
+    border-bottom: 1px solid red!important;
+    box-shadow: none!important;
+    
+  }
+
 #loginButton{
     float: right;
     margin-right: 20px;
