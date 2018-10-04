@@ -7,14 +7,21 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        googleID: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         emails: {
-           type: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len:[1]
+                len: [1]
             }
+        },
+        photo: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
-
     });
     User.associate = models => {
         User.hasMany(models.Review)

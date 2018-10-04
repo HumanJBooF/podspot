@@ -6,10 +6,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-require("./config/auth")(passport);
-const apiRoutes = require("./routes/apiRoutes"); // Here are our routes being required and they are being called down below
+const auth = require("./config/auth");
+const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
-const authRoutes = require('./routes/authRoutes'); // Here are our routes being required and they are being called down below
+const authRoutes = require('./routes/authRoutes');
 
 
 
@@ -45,6 +45,8 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+
+auth(passport);
 
 // Routes
 apiRoutes(app);
