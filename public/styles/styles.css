@@ -11,15 +11,30 @@
     z-index: 2;
 }
 
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
+
 #openChat{
     float: right;
     margin: 5px;
+    font-size: 24px;
 
 }
 
 #footerBox{
 
-    height:50px;
+    height:75px;
+    padding:0px;
+    width:100%;
 
 }
 
