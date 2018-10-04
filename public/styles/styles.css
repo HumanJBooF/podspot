@@ -7,8 +7,20 @@
 /* hides chat box until it is opened, and display it over the other content */
 #chatBox{
 
-    visibility: visible;
+    visibility: hidden;
     z-index: 2;
+}
+
+#openChat{
+    float: right;
+    margin: 5px;
+
+}
+
+#footerBox{
+
+    height:50px;
+
 }
 
 .nav{

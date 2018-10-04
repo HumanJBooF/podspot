@@ -40,3 +40,33 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+//Peter's chat code
+var $chatBox = $("#chatBox");
+var $openChat = $("#openChat");
+var $sendMessage = $("#sendMessage");
+var $closeChat = $("#closeChat");
+ //Opens Chat box
+$openChat.on("click", handleOpenChat);
+ var handleOpenChat = function () {
+   $chatBox.attr("style", "visiblility: visible;");
+ }
+ //emits message typed into #messageText to #messageBoard through socket_io.js
+$sendMessage.on("click", handleSendMessage);
+ var handleSendMessage = function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#messageText').val());
+      $('#messageText').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messageBoard').append($('<li>').text(msg));
+    });
+  }
+ //Closes Chat box
+$closeChat.on("click", handleCloseChat);
+ var handleCloseChat = function () {
+ 
+    $chatBox.hide();
+ }
