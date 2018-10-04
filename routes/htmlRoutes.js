@@ -9,6 +9,10 @@ const routes = (app) => {
     res.render("index");
   });
 
+  app.get("/search", function (req, res) {
+    res.render("search");
+  });
+
 
 };
 

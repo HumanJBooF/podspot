@@ -1,30 +1,92 @@
-.home{
+body html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rgb(148, 1, 1);
+}
+.centerSearch{
+    max-width: 50%;
+}
+.topBar{
     max-width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
 
+#buttonDiv{
+    padding: 0;
+    padding: 5px;
+    width: 110px;
+    line-height: 30px;
+    text-align: right;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border: 0;
+    float: right;
+    font-weight: bold;
+
+}
+#buttonDiv img{
+    max-height: 30px;
+    max-width: 30px;
+    float: left;
+    padding: 0;
+}
+
+#searchForm{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .nav{
-    margin-top: 20px;
-    height: 75px;
-    border-bottom: 3px solid rgb(196, 190, 190);
-    
+    margin-top: 20px; 
+    height: 75px; 
+}
+#searchTop{
+    margin: 0;
+    padding-top: 20px;
+    height: 85px;
+    border-bottom: 3px solid rgb(51, 49, 49);
+    background-image: linear-gradient(black, rgb(53, 53, 53));
+    margin-bottom: 75px;
 
 }
 .container{
-    padding-top:150px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.searchContainer{
+    padding-top: 50px;
+    padding-bottom: 70px;
+    color: white;
+    background-image: linear-gradient(black, rgb(53, 53, 53));
+    border-bottom: 1px solid rgb(148, 1, 1);
+}
+
+.outline{
+    border-bottom: 3px solid rgb(51, 49, 49);
+    height: auto;
+}
 .title{
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #searchDiv{
     width: 100%;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #searchButton{
     padding: 0;
+    background-color:rgb(148, 1, 1);
     width:14.5%;
     height: 45px;
     line-height: 45px;
@@ -37,13 +99,13 @@
 
 #searchBar{
     color: black;
+    background-color: rgb(65, 64, 64);
     height: 29px;
     padding: 6px;
     padding-left: 10px;
     padding-top: 10px;
     float:left;
     border:0;
-    background-color:rgb(236, 231, 231);
     width: 85.5%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
