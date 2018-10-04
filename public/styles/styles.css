@@ -145,6 +145,12 @@ body{
 >>>>>>> master
 }
 
+textarea:focus {
+    border-bottom: 1px solid red!important;
+    box-shadow: none!important;
+    
+  }
+
 #loginButton{
     float: right;
 }
