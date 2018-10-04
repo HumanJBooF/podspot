@@ -1,61 +1,63 @@
 require("dotenv").config();
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const dB = require("../models/users.js");
+const db = require("../models");
 
 const configAuth = passport => {
 
 
-    passport.serializeUser(function (user, done) {
-        // done(null, user.id);
+    passport.serializeUser((user, done) => {
         done(null, user);
     });
 
-    passport.deserializeUser(function (obj, done) {
-        // Users.findById(obj, done);
+    passport.deserializeUser((id, done) => {
+        db.User.find({
+            where: {
+                'googleID': id
+            }
+        }).then(dbId => {
+            console.log(dbId, 'DESERIALIZE');
+        })
         done(null, obj);
     });
 
-    passport.use(new GoogleStrategy(
-        // Use the API access settings stored in ./config/auth.json. You must create
-        // an OAuth 2 client ID and secret at: https://console.developers.google.com
-        {
-            // clientID: process.env.PASSPORT_CLIENT_ID,
-            // clientSecret: process.env.PASSPORT_SECRET,
-            // callbackURL: process.env.PASSPORT_CALLBACKURL,
-            clientID:"880300718600-5k6a3ithtblbv1msidetufni0tas64a1.apps.googleusercontent.com",
-            clientSecret:"-MHupsr0aRNrKxTBaYL8P2b-",
-            callbackURL:"http://localhost:3000/auth/google/callback",
-            passReqToCallback: true
-        },
+    passport.use(new GoogleStrategy({
+        clientID: process.env.PASSPORT_CLIENT_ID,
+        clientSecret: process.env.PASSPORT_SECRET,
+        callbackURL: process.env.PASSPORT_CALLBACKURL,
+        passReqToCallback: true
+    }, (req, accessToken, refreshToken, profile, done) => {
+        // console.log(profile, "PROFILE PROFILE")
+        // console.log(refreshToken, "REFRESH TOKEN")
+        // console.log(accessToken, "ACCESS TOKEN")
+        process.nextTick(() => {
+            db.User.findOne({
+                where: {
+                    "googleID": profile.id
+                }
+            }, (err, user) => {
+                console.log(`whats in this user ${user}`)
+                if (user) {
+                    return done(null, user);
+                    // creates new user if user is null
+                } else {
+                    console.log(`ELSE ELSE ELSE`)
+                    const newUser = new db.User();
 
-        function (accessToken, refreshToken, Users, done) {
-            process.nextTick(function () {
-                dB.findOne({ "google.id": Users.id }, function (err, user) {
-                    if (err)
+                    newUser.googleID = profile.id;
+                    newUser.displayName = profile.displayName;
+                    newUser.emails = profile.emails[0].value;
+                    newUser.photo = profile.photos[0].value;
 
-                        return done(err);
-                    // checks for user
-                    if (user) {
-                        return done(null, user);
-                        // creates new user if user is null
-                    } else {
-                        const newUser = new dB();
-
-                        newUser.google.id = Users.id;
-                        newUser.google.token = token;
-                        newUser.google.name = Users.displayName;
-                        newUser.google.email = Users.emails[0].value; // pull the first email
-
-                        // save the user
-                        newUser.save(function (err) {
-                            if (err)
-                                throw err;
-                            return done(null, newUser);
-                        });
-                    }
-                })
+                    // save the user
+                    newUser.save((err) => {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
             })
-        }
+        })
+    }
     ));
 }
 module.exports = configAuth;
