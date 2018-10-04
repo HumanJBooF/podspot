@@ -2,13 +2,35 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+require("./config/auth")(passport);
 const apiRoutes = require("./routes/apiRoutes"); // Here are our routes being required and they are being called down below
-const htmlRoutes = require("./routes/htmlRoutes"); // Here are our routes being required and they are being called down below
+const htmlRoutes = require("./routes/htmlRoutes");
+const authRoutes = require('./routes/authRoutes'); // Here are our routes being required and they are being called down below
+
+
 
 const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(logger('dev'));
+app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +49,7 @@ app.set("view engine", "handlebars");
 // Routes
 apiRoutes(app);
 htmlRoutes(app);
+authRoutes(app, passport);
 
 const syncOptions = { force: false };
 
