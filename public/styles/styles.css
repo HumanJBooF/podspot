@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body html{
     padding: 0;
     margin: 0;
@@ -10,11 +11,15 @@ body{
     max-width: 50%;
 }
 .topBar{
+=======
+#home{
+>>>>>>> master
     max-width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
 
+<<<<<<< HEAD
 #buttonDiv{
     padding: 0;
     padding: 5px;
@@ -52,6 +57,18 @@ body{
     border-bottom: 3px solid rgb(51, 49, 49);
     background-image: linear-gradient(black, rgb(53, 53, 53));
     margin-bottom: 75px;
+=======
+/* hides chat box until it is opened, and display it over the other content */
+#chatBox{
+
+    visibility: visible;
+    z-index: 2;
+}
+
+.nav{
+    margin-top: 20px;
+    margin-right: 20px;
+>>>>>>> master
 
 }
 .container{
@@ -77,6 +94,7 @@ body{
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 #searchDiv{
     width: 100%;
     margin: 0;
@@ -95,20 +113,36 @@ body{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: none;
+=======
+#searchButton{
+    width:100%;
+    margin-top: 3px;
+    height: 35px;
+    line-height: 35px;
+>>>>>>> master
 }
 
 #searchBar{
     color: black;
+<<<<<<< HEAD
     background-color: rgb(65, 64, 64);
     height: 29px;
+=======
+>>>>>>> master
     padding: 6px;
-    padding-left: 10px;
     padding-top: 10px;
     float:left;
     border:0;
+<<<<<<< HEAD
     width: 85.5%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+=======
+    background-color:rgb(236, 231, 231);
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 100%;
+>>>>>>> master
 }
 
 textarea:focus {
@@ -119,5 +153,4 @@ textarea:focus {
 
 #loginButton{
     float: right;
-    margin-right: 20px;
 }
