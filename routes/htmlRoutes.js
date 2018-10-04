@@ -10,6 +10,12 @@ const routes = (app) => {
   });
   // });
 
+<<<<<<< HEAD
+  app.get("/search", function (req, res) {
+    res.render("search");
+  });
+
+=======
   // GET /auth/google
   //   Use passport.authenticate() as route middleware to authenticate the
   //   request. 
@@ -40,6 +46,7 @@ const routes = (app) => {
   //   app.get("*", function(req, res) {
   //     res.render("404");
   //   });
+>>>>>>> master
 
 };
 
