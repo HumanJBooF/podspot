@@ -26,7 +26,7 @@ const routes = (app, passport) => {
 
 
     // Simple route middleware to ensure user is authenticated.
-    const isLoggedIn = (req, res, next) => {
+    function isLoggedIn (req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         }

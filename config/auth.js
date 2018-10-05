@@ -6,18 +6,16 @@ const configAuth = passport => {
 
 
     passport.serializeUser((user, done) => {
-        done(null, user);
+        done(null, user.id);
     });
 
-    passport.deserializeUser((id, done) => {
+    passport.deserializeUser((user, done) => {
         db.User.find({
             where: {
-                'googleID': id
+                'googleID': user.id
             }
-        }).then(dbId => {
-            console.log(dbId, 'DESERIALIZE');
         })
-        done(null, obj);
+        done(null, user.id);
     });
 
     passport.use(new GoogleStrategy({
