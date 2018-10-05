@@ -5,37 +5,41 @@ var $chatBox = $("#chatBox");
 var $openChat = $("#openChat");
 var $sendMessage = $("#sendMessage");
 var $closeChat = $("#closeChat");
+var socket = io();
 
 
 //Opens Chat box
 $openChat.on("click", handleOpenChat);
 
-var handleOpenChat = function () {
+function handleOpenChat() {
 
-  $chatBox.attr("style", "visiblility: visible;");
+    $chatBox.attr("style", "visibility: visible;");
+
 
 }
 
 //emits message typed into #messageText to #messageBoard through socket_io.js
 $sendMessage.on("click", handleSendMessage);
 
-var handleSendMessage = function () {
-    var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#messageText').val());
-      $('#messageText').val('');
-      return false;
+function handleSendMessage() {
+    console.log("here");
+    
+    $('form').submit(function () {
+        socket.emit('chat message', $('#messageText').val());
+        $('#messageText').val('');
+
+        return false;
     });
-    socket.on('chat message', function(msg){
-      $('#messageBoard').append($('<li>').text(msg));
+    socket.on('chat message', function (msg) {
+        $('#messageBoard').append($('<li>').text(msg));
     });
-  }
+}
 
 //Closes Chat box
 $closeChat.on("click", handleCloseChat);
 
-var handleCloseChat = function () {
- 
+function handleCloseChat() {
+
     $chatBox.hide();
 
 }

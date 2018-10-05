@@ -15,7 +15,7 @@
       </div>
       <div id="chatBox" class="container">
         <form action="">
-          <textarea id="messageBoard" class="materialize-textarea"></textarea>
+          <textarea rows="8" id="messageBoard" class="materialize-textarea"></textarea>
           <textarea id="messageText" class="materialize-textarea"></textarea>
           <button id="sendMessage" class="btn waves-effect waves-light">Send
             <button id="closeChat" class="btn waves-effect waves-light">X
@@ -40,7 +40,7 @@
 </div>
 <footer class="page-footer">
   <div id="footerBox" class="valign wrapper container">
-    <a href="/auth/google">Login with Google</a>
+    <a href="/auth/google">Login with Google</a> {{!-- link for google auth --}}
     <button id="openChat" class="btn-large waves-effect waves-light">Chat
       <i class="small material-icons right">chat</i>
     </button>
@@ -50,5 +50,6 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/socket_io.js"></script>
 <script src="/js/init.js"></script>
-<script src="/js/index.js"></script> {{!-- link for google auth --}}
+<script src="/js/index.js"></script>
