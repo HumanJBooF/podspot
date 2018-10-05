@@ -7,6 +7,7 @@ const routes = (app, passport) => {
     });
 
     app.get('/login', isLoggedIn, (req, res) => {
+        console.log(`WHATS THE REQ.USER MOTHA : : :${req}`)
         res.render('login', {
             user: req.user
         });
@@ -19,10 +20,10 @@ const routes = (app, passport) => {
 
     app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-    app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: '/login',
-        failureRedirect: '/'
-    }));
+    app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+        (req, res) => {
+            res.redirect('/login');
+        });
 
 
     // Simple route middleware to ensure user is authenticated.
