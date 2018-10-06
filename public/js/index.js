@@ -1,20 +1,23 @@
 $(function() {
-  //Peter's chat code
-  var $chatBox = $("#chatBox");
-  var $openChat = $("#openChat");
-  var $sendMessage = $("#sendMessage");
-  var $closeChat = $("#closeChat");
-  // these are for the bottom function ajax call
-  const $searchTerm = $("#searchBar");
-  const $searchButton = $("#searchButton");
+//Peter's chat code
+var $chatBox = $("#chatBox");
+var $openChat = $("#openChat");
+var $sendMessage = $("#sendMessage");
+var $closeChat = $("#closeChat");
+var socket = io("http://192:168:15:111:3000")
+=======
+// these are for the bottom function ajax call
+const $searchTerm = $('#searchBar');
+const $searchButton = $('#searchButton');
+ 
 
-  //Opens Chat box
-  $openChat.on("click", handleOpenChat);
 
-//   $("img").bind("error",function(){
-//     // Replacing image source
-//     $(this).attr("src","../image/g_logo.png");
-//   });
+//Opens Chat box
+$openChat.on("click", handleOpenChat);
+
+function handleOpenChat() {
+
+    $chatBox.attr("style", "visibility: visible;");
 
 
 
@@ -23,25 +26,28 @@ $(function() {
     $chatBox.attr("style", "visiblility: visible;");
   };
 
-  //emits message typed into #messageText to #messageBoard through socket_io.js
-  $sendMessage.on("click", handleSendMessage);
+function handleSendMessage() {
+    
+    var messageText;
 
-  var handleSendMessage = function() {
-    var socket = io();
-    $("form").submit(function() {
-      socket.emit("chat message", $("#messageText").val());
-      $("#messageText").val("");
-      return false;
+    $('form').submit(function () {
+        messageText = $('#messageText').val()
+        socket.emit('chat message', messageText);
+        console.log(messageText);
+
+        return false;
     });
-    socket.on("chat message", function(msg) {
-      $("#messageBoard").append($("<li>").text(msg));
+    socket.on('chat message', function (msg) {
+        $('#messageBoard').append($('<li>').text(msg));
     });
-  };
+}
+
 
   //Closes Chat box
   $closeChat.on("click", handleCloseChat);
 
-  var handleCloseChat = function() {
+
+function handleCloseChat() {
     $chatBox.hide();
   };
 
@@ -59,6 +65,7 @@ $(function() {
         .trim()
     });
   };
+
 
   // sending the data to the back end
   const sendData = data => {
