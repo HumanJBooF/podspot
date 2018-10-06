@@ -1,21 +1,64 @@
-body html{
+body html {
     padding: 0;
     margin: 0;
 }
 
-body{
+/* hides chat box until it is opened, and display it over the other content */
+#chatBox{
+
+    visibility: hidden;
+    z-index: 2;
+    float: center;
+}
+
+#messageBoard{
+
+    color: white;
+    float:left;
+}
+
+#messageText{
+
+    color: white;
+    float:left;
+}
+
+#sendMessage{
+
+    background-color: rgb(148, 1, 1);
+    float:right;
+
+}
+
+#closeChat{
+
+    visibility: hidden;
+    background-color: rgb(148, 1, 1);
+
+}
+
+
+#openChat{
+
     background-color: rgb(148, 1, 1);
 }
-.centerSearch{
+
+
+body {
+    background-color: rgb(148, 1, 1);
+}
+
+.centerSearch {
     max-width: 50%;
 }
-.topBar{
+
+.topBar {
     max-width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
 
-#buttonDiv{
+#buttonDiv {
     padding: 0;
     padding: 5px;
     width: 110px;
@@ -26,84 +69,90 @@ body{
     border: 0;
     float: right;
     font-weight: bold;
-
 }
-#buttonDiv img{
+
+#buttonDiv img {
     max-height: 30px;
     max-width: 30px;
     float: left;
     padding: 0;
 }
 
-#searchForm{
+#searchForm {
     width: 65%;
     margin-left: auto;
     margin-right: auto;
 }
 
-  main {
+main {
     flex: 1 0 auto;
-  }
-      
+}
 
-#openChat{
+#openChat {
     float: right;
     margin: 5px;
     font-size: 24px;
-
 }
 
-#footerBox{
 
-    height:75px;
-    padding:0px;
-    width:100%;
+.page-footer{
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(black, rgb(53, 53, 53));
 
+
+#footerBox {
+    height: 75px;
+    padding: 0px;
+    width: 100%;
 }
 
-#searchTop{
+#searchTop {
     margin: 0;
     padding-top: 20px;
     height: 85px;
     border-bottom: 3px solid rgb(51, 49, 49);
     background-image: linear-gradient(black, rgb(53, 53, 53));
     margin-bottom: 75px;
-
 }
-.container{
+
+.container {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.searchContainer{
-   padding-top: 20px;
+.searchContainer {
+    padding-top: 20px;
     padding-bottom: 20px;
     color: white;
     background-image: linear-gradient(black, rgb(53, 53, 53));
     border-bottom: 1px solid rgb(148, 1, 1);
 }
 
-.outline{
+.outline {
     border-bottom: 3px solid rgb(51, 49, 49);
     height: auto;
 }
-.title{
+
+.title {
     text-align: center;
     margin-bottom: 20px;
 }
 
-#searchDiv{
+#searchDiv {
     width: 100%;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
 }
 
-#searchButton{
+#searchButton {
     padding: 0;
-    background-color:rgb(148, 1, 1);
-    width:14.5%;
+    background-color: rgb(148, 1, 1);
+    width: 14.5%;
     height: 45px;
     line-height: 45px;
     border-top-left-radius: 0;
@@ -113,15 +162,15 @@ body{
     box-shadow: none;
 }
 
-#searchBar{
+#searchBar {
     color: white;
-   background-color: rgb(65, 64, 64);
+    background-color: rgb(65, 64, 64);
     height: 29px;
     padding: 6px;
     padding-left: 15px;
     padding-top: 10px;
-    float:left;
-    border:0;
+    float: left;
+    border: 0;
     width: 85.5%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -130,29 +179,28 @@ body{
 textarea:focus {
     border-bottom: 1px solid red!important;
     box-shadow: none!important;
-    
-  }
+}
 
-#loginButton{
+#loginButton {
     float: right;
 }
 
-a#loginButton{
+a#loginButton {
     margin-right: 14px;
 }
 
-.collapsible{
+.collapsible {
     border: 1px solid rgb(148, 1, 1)!important;
     box-shadow: none;
 }
 
-.collapsible-body{
-    background-color:white;
+.collapsible-body {
+    background-color: white;
     border-left: 1px solid black;
-    border-right: 1px solid 
+    border-right: 1px solid
 }
 
-.collapsible-header{
+.collapsible-header {
     border: 1px solid black!important;
     height: 70px;
     padding: 0px;
@@ -160,12 +208,14 @@ a#loginButton{
     line-height: 70px;
     font-weight: bold;
     font-size: 125%;
-    background-color:rgb(226, 224, 224);
+    background-color: rgb(226, 224, 224);
 }
-.collapsible-header img{
+
+.collapsible-header img {
     width: 150px;
     height: 150px;
     margin-right: 40px;
+
     -webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
       mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
 

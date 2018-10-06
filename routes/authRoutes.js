@@ -6,11 +6,8 @@ const routes = (app, passport) => {
 
     });
 
-    app.get('/login', isLoggedIn, (req, res) => {
-        console.log(`WHATS THE REQ.USER MOTHA : : :${req}`)
-        res.render('login', {
-            user: req.user
-        });
+    app.get('/', isLoggedIn, (req, res) => {
+        res.render('/');
     });
 
     app.get('/logout', (req, res) => {
@@ -22,7 +19,7 @@ const routes = (app, passport) => {
 
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
         (req, res) => {
-            res.redirect('/login');
+            res.redirect('/');
         });
 
 
@@ -31,7 +28,7 @@ const routes = (app, passport) => {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.redirect('/login');
+        res.redirect('/');
     }
 }
 module.exports = routes;

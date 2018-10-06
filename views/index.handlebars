@@ -16,33 +16,33 @@
   </div>
 </div>
 
-
 <div class="container">
   <ul class="collapsible">
 
   </ul>
 </div>
 
-<div id="chatBox" class="container">
-  <form action="">
-    <textarea readonly rows="10" id="messageBoard" class="materialize-textarea"></textarea>
-    <textarea id="messageText" class="materialize-textarea"></textarea>
-    <button id="sendMessage" class="btn waves-effect waves-light">Send
-      <button id="closeChat" class="btn waves-effect waves-light">X
-  </form>
-</div>
-
 <footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <button id="openChat" class="btn waves-effect waves-light">Chat
-          <i class="small material-icons right">chat</i>
-        </button>
+  <div class="row">
+    <div class="col s9">
+      <div id="chatBox" class="container">
+        <form action="">
+          <textarea readonly rows="10" id="messageBoard" class="materialize-textarea"></textarea>
+          <textarea id="messageText" class="materialize-textarea"></textarea>
+          <button id="sendMessage" class="btn waves-effect waves-light">Send
+        </form>
+
       </div>
     </div>
+    <div class="valign-wrapper col s3">
+      <button id="openChat" class="btn waves-effect waves-light">Chat
+        <i class="small material-icons right">chat</i>
+      </button>
+      <button id="closeChat" class="btn waves-effect waves-light">X
+    </div>
+  </div>
 </footer>
-</div>
+
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
