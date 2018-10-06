@@ -5,8 +5,7 @@ var $chatBox = $("#chatBox");
 var $openChat = $("#openChat");
 var $sendMessage = $("#sendMessage");
 var $closeChat = $("#closeChat");
-var socket = io();
-
+var socket = io("http://192:168:15:111:3000")
 
 //Opens Chat box
 $openChat.on("click", handleOpenChat);
@@ -22,11 +21,13 @@ function handleOpenChat() {
 $sendMessage.on("click", handleSendMessage);
 
 function handleSendMessage() {
-    console.log("here");
     
+    var messageText;
+
     $('form').submit(function () {
-        socket.emit('chat message', $('#messageText').val());
-        $('#messageText').val('');
+        messageText = $('#messageText').val()
+        socket.emit('chat message', messageText);
+        console.log(messageText);
 
         return false;
     });
