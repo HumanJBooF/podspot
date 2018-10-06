@@ -22,6 +22,7 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         })
+        Podcast.hasMany(models.Review)
     }
     return Podcast;
 };

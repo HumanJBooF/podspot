@@ -1,92 +1,118 @@
-$(function() {
-//Peter's chat code
-var $chatBox = $("#chatBox");
-var $openChat = $("#openChat");
-var $sendMessage = $("#sendMessage");
-var $closeChat = $("#closeChat");
-var socket = io("http://192:168:15:111:3000")
+$(function () {
+    //Peter's chat code
+    var $chatBox = $("#chatBox");
+    var $openChat = $("#openChat");
+    var $sendMessage = $("#sendMessage");
+    var $closeChat = $("#closeChat");
+    var socket = io("http://192:168:15:111:3000")
 
-// these are for the bottom function ajax call
-const $searchTerm = $('#searchBar');
-const $searchButton = $('#searchButton');
- 
-
-
-//Opens Chat box
-$openChat.on("click", handleOpenChat);
-
-function handleOpenChat() {
-
-    $chatBox.attr("style", "visibility: visible;");
-
-};
+    // these are for the bottom function ajax call
+    const $searchTerm = $('#searchBar');
+    const $searchButton = $('#searchButton');
 
 
-  var handleOpenChat = function() {
-    $chatBox.attr("style", "visiblility: visible;");
-  };
 
-function handleSendMessage() {
-    
-    var messageText;
+    //Opens Chat box
+    $openChat.on("click", handleOpenChat);
 
-    $('form').submit(function () {
-        messageText = $('#messageText').val()
-        socket.emit('chat message', messageText);
-        console.log(messageText);
+    function handleOpenChat () {
 
-        return false;
-    });
-    socket.on('chat message', function (msg) {
-        $('#messageBoard').append($('<li>').text(msg));
-    });
-}
+        $chatBox.attr("style", "visibility: visible;");
+
+    };
 
 
-  //Closes Chat box
-  $closeChat.on("click", handleCloseChat);
+    var handleOpenChat = function () {
+        $chatBox.attr("style", "visiblility: visible;");
+    };
 
+    function handleSendMessage () {
 
-function handleCloseChat() {
-    $chatBox.hide();
-  };
+        var messageText;
 
-  const validateForm = event => {
-    event.preventDefault();
+        $('form').submit(function () {
+            messageText = $('#messageText').val()
+            socket.emit('chat message', messageText);
+            console.log(messageText);
 
-    if (!$searchTerm.val().trim()) {
-      // Check if the field is not empty
-      return;
+            return false;
+        });
+        socket.on('chat message', function (msg) {
+            $('#messageBoard').append($('<li>').text(msg));
+        });
     }
 
-    sendData({
-      term: $searchTerm // creating the object to give to the back-end
-        .val()
-        .trim()
-    });
-  };
+
+    //Closes Chat box
+    $closeChat.on("click", handleCloseChat);
 
 
-  // sending the data to the back end
-  const sendData = data => {
-    $.post("/", data).then(function(response) {
-      console.log(response);
-      $(".collapsible").empty();
-      for (var i = 0; i < response.length; i++) {
-        $(".collapsible").prepend(
-          "<li><div class='collapsible-header'><img src='" +
-            response[i].logo +
-            "'>" +
-            response[i].title +
-            "</div><div class='collapsible-body'><p>" +
-            response[i].descript +
-            "</p><a href='" + response[i].url + "' target='_blank'>" +
-            response[i].url +
-            "</a></div></li>"
-        );
-      }
-    });
-  };
+    function handleCloseChat () {
+        $chatBox.hide();
+    };
 
-  $searchButton.on("click", validateForm); //on button click call the validateForm function
+    const validateForm = event => {
+        event.preventDefault();
+
+        if (!$searchTerm.val().trim()) {
+            // Check if the field is not empty
+            return;
+        }
+
+        sendData({
+            term: $searchTerm // creating the object to give to the back-end
+                .val()
+                .trim()
+        });
+    };
+
+
+    // sending the data to the back end
+    const sendData = data => {
+        $.post("/", data).then(function (response) {
+            console.log(response);
+            $(".collapsible").empty();
+            for (var i = 0; i < response.length; i++) {
+                $(".collapsible").prepend(
+                    "<li><div class='collapsible-header'><img src='" +
+                    response[i].logo +
+                    "'>" +
+                    response[i].title +
+                    "</div><div class='collapsible-body'><p>" +
+                    response[i].descript +
+                    "</p><a href='" + response[i].url + "' target='_blank'>" +
+                    response[i].url +
+                    "</a></div></li>"
+                );
+            }
+        });
+    };
+
+    $searchButton.on("click", validateForm); //on button click call the validateForm function
+
+    const $reviewButton = $('#reviewButton');
+    const $podTitle = $('#podTitle');
+    const $podDescript = $('#podDescript');
+    const $review = $('#review');
+
+    const validateReview = (event) => {
+        event.preventDefault();
+
+        if (!$review.val().trim()) {
+            return;
+        }
+
+        sendReview({
+            title: $podTitle.val().trim(),
+            descript: $podDescript.val().trim(),
+            review: $review.val().trim()
+        });
+    }
+
+    const sendReview = (data) => {
+        $.post('/review', data)
+            .then(data);
+    };
+
+    $($reviewButton).on('click', validateReview);
 });
