@@ -3,6 +3,47 @@ body html {
     margin: 0;
 }
 
+/* hides chat box until it is opened, and display it over the other content */
+#chatBox{
+
+    visibility: hidden;
+    z-index: 2;
+    float: center;
+}
+
+#messageBoard{
+
+    color: white;
+    float:left;
+}
+
+#messageText{
+
+    color: white;
+    float:left;
+}
+
+#sendMessage{
+
+    background-color: rgb(148, 1, 1);
+    float:right;
+
+}
+
+#closeChat{
+
+    visibility: hidden;
+    background-color: rgb(148, 1, 1);
+
+}
+
+
+#openChat{
+
+    background-color: rgb(148, 1, 1);
+}
+
+
 body {
     background-color: rgb(148, 1, 1);
 }
@@ -52,6 +93,15 @@ main {
     margin: 5px;
     font-size: 24px;
 }
+
+
+.page-footer{
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(black, rgb(53, 53, 53));
+
 
 #footerBox {
     height: 75px;
