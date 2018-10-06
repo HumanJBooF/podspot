@@ -73,17 +73,7 @@ function handleCloseChat() {
       console.log(response);
       $(".collapsible").empty();
       for (var i = 0; i < response.length; i++) {
-        $(".collapsible").prepend(
-          "<li><div class='collapsible-header'><img src='" +
-            response[i].logo +
-            "'>" +
-            response[i].title +
-            "</div><div class='collapsible-body'><p>" +
-            response[i].descript +
-            "</p><a href='" + response[i].url + "' target='_blank'>" +
-            response[i].url +
-            "</a></div></li>"
-        );
+        $(".collapsible").prepend("<li><div class='collapsible-header'><img src='" + response[i].logo +"'>" +  response[i].title + "<div id='add'>+</div></div><div class='collapsible-body'><p>" + response[i].descript + "</p><a href='" + response[i].url + "' target='_blank'>" + response[i].url + "</a></div></li>");
       }
     });
   };
