@@ -215,6 +215,19 @@ a#loginButton {
     width: 150px;
     height: 150px;
     margin-right: 40px;
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+    -webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+
 }
+
+#add{
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    line-height: 70px;
+    background-color: green;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 5px;
+}
+
