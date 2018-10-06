@@ -5,7 +5,7 @@ var $openChat = $("#openChat");
 var $sendMessage = $("#sendMessage");
 var $closeChat = $("#closeChat");
 var socket = io("http://192:168:15:111:3000")
-=======
+
 // these are for the bottom function ajax call
 const $searchTerm = $('#searchBar');
 const $searchButton = $('#searchButton');
