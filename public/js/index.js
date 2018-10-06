@@ -1,12 +1,12 @@
 $(function () {
 
-//Peter's chat code
+//Chat variables
 var $chatBox = $("#chatBox");
 var $openChat = $("#openChat");
 var $sendMessage = $("#sendMessage");
 var $closeChat = $("#closeChat");
 var socket = io("http://192:168:15:111:3000")
-=======
+//=======
 // these are for the bottom function ajax call
 const $searchTerm = $('#searchBar');
 const $searchButton = $('#searchButton');
@@ -19,6 +19,7 @@ $openChat.on("click", handleOpenChat);
 function handleOpenChat() {
 
     $chatBox.attr("style", "visibility: visible;");
+    $closeChat.attr("style", "visibility: visible;");
 
 
 }
@@ -48,6 +49,7 @@ $closeChat.on("click", handleCloseChat);
 function handleCloseChat() {
 
     $chatBox.hide();
+    $closeChat.hide();
 
 }
 
