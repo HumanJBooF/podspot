@@ -1,11 +1,26 @@
 module.exports = function (sequelize, DataTypes) {
     const User = sequelize.define("User", {
-        user_name: {
+        displayName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
+        },
+        googleID: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        emails: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        photo: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
     User.associate = models => {
