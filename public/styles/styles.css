@@ -13,11 +13,13 @@ body html{
 
 #messageBoard{
 
+    color: white;
     float:left;
 }
 
 #messageText{
 
+    color: white;
     float:left;
 }
 
