@@ -6,9 +6,9 @@ const routes = (app) => {
     res.render("index");
   });
 
-  app.get("/search", (req, res) => {
-    res.render("search");
-  });
+  // app.get("/search", (req, res) => {
+  //   res.render("search");
+  // });
 
   app.get('/login', (req, res) => {
     res.render('login');
