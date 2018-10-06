@@ -10,7 +10,12 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Review.associates = models => {
-        Review.belongsTo(models.Users, {
+        Review.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+        Review.belongsTo(models.Podcast, {
             foreignKey: {
                 allowNull: false
             }
@@ -18,3 +23,4 @@ module.exports = function (sequelize, DataTypes) {
     }
     return Review;
 };
+
