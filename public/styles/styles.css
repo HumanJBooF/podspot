@@ -4,45 +4,36 @@ body html {
 }
 
 /* hides chat box until it is opened, and display it over the other content */
-#chatBox{
 
+#chatBox {
     visibility: hidden;
     z-index: 2;
     float: center;
 }
 
-#messageBoard{
-
+#messageBoard {
     color: white;
-    float:left;
+    float: left;
 }
 
-#messageText{
-
+#messageText {
     color: white;
-    float:left;
+    float: left;
 }
 
-#sendMessage{
-
+#sendMessage {
     background-color: rgb(148, 1, 1);
-    float:right;
-
+    float: right;
 }
 
-#closeChat{
-
+#closeChat {
     visibility: hidden;
     background-color: rgb(148, 1, 1);
-
 }
 
-
-#openChat{
-
+#openChat {
     background-color: rgb(148, 1, 1);
 }
-
 
 body {
     background-color: rgb(148, 1, 1);
@@ -94,14 +85,13 @@ main {
     font-size: 24px;
 }
 
-
-.page-footer{
+.page-footer {
     z-index: 2;
     position: fixed;
     bottom: 0;
     width: 100%;
     background-image: linear-gradient(black, rgb(53, 53, 53));
-
+}
 
 #footerBox {
     height: 75px;
@@ -215,13 +205,11 @@ a#loginButton {
     width: 150px;
     height: 150px;
     margin-right: 40px;
-
-    -webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-#add{
+#add {
     height: 50px;
     width: 50px;
     margin-left: auto;
@@ -230,4 +218,3 @@ a#loginButton {
     border-top-left-radius: 25%;
     border-top-right-radius: 5px;
 }
-
