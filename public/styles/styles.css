@@ -42,12 +42,6 @@ body{
     margin-right: auto;
 }
 
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
   main {
     flex: 1 0 auto;
   }
@@ -68,10 +62,6 @@ body {
 
 }
 
-.nav{
-    margin-top: 20px; 
-    height: 75px; 
-}
 #searchTop{
     margin: 0;
     padding-top: 20px;
@@ -88,8 +78,8 @@ body {
 }
 
 .searchContainer{
-    padding-top: 50px;
-    padding-bottom: 70px;
+   padding-top: 20px;
+    padding-bottom: 20px;
     color: white;
     background-image: linear-gradient(black, rgb(53, 53, 53));
     border-bottom: 1px solid rgb(148, 1, 1);
@@ -125,10 +115,11 @@ body {
 }
 
 #searchBar{
-    color: black;
-    background-color: rgb(65, 64, 64);
+    color: white;
+   background-color: rgb(65, 64, 64);
     height: 29px;
     padding: 6px;
+    padding-left: 15px;
     padding-top: 10px;
     float:left;
     border:0;
@@ -150,3 +141,34 @@ textarea:focus {
 a#loginButton{
     margin-right: 14px;
 }
+
+.collapsible{
+    border: 1px solid rgb(148, 1, 1)!important;
+    box-shadow: none;
+}
+
+.collapsible-body{
+    background-color:white;
+    border-left: 1px solid black;
+    border-right: 1px solid 
+}
+
+.collapsible-header{
+    border: 1px solid black!important;
+    height: 70px;
+    padding: 0px;
+    overflow: hidden;
+    line-height: 70px;
+    font-weight: bold;
+    font-size: 125%;
+    background-color:rgb(226, 224, 224);
+}
+.collapsible-header img{
+    width: 150px;
+    height: 150px;
+    margin-right: 40px;
+    -webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+
+}
+
