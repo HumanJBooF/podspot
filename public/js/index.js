@@ -5,40 +5,48 @@ var $chatBox = $("#chatBox");
 var $openChat = $("#openChat");
 var $sendMessage = $("#sendMessage");
 var $closeChat = $("#closeChat");
+var socket = io("http://192:168:15:111:3000")
+=======
 // these are for the bottom function ajax call
 const $searchTerm = $('#searchBar');
 const $searchButton = $('#searchButton');
  
 
+
 //Opens Chat box
 $openChat.on("click", handleOpenChat);
 
-var handleOpenChat = function () {
+function handleOpenChat() {
 
-  $chatBox.attr("style", "visiblility: visible;");
+    $chatBox.attr("style", "visibility: visible;");
+
 
 }
 
 //emits message typed into #messageText to #messageBoard through socket_io.js
 $sendMessage.on("click", handleSendMessage);
 
-var handleSendMessage = function () {
-    var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#messageText').val());
-      $('#messageText').val('');
-      return false;
+function handleSendMessage() {
+    
+    var messageText;
+
+    $('form').submit(function () {
+        messageText = $('#messageText').val()
+        socket.emit('chat message', messageText);
+        console.log(messageText);
+
+        return false;
     });
-    socket.on('chat message', function(msg){
-      $('#messageBoard').append($('<li>').text(msg));
+    socket.on('chat message', function (msg) {
+        $('#messageBoard').append($('<li>').text(msg));
     });
-  }
+}
 
 //Closes Chat box
 $closeChat.on("click", handleCloseChat);
 
-var handleCloseChat = function () {
- 
+function handleCloseChat() {
+
     $chatBox.hide();
 
 }
@@ -63,8 +71,7 @@ var handleCloseChat = function () {
         $.post('/search/term', data)
             .then(function(response){
                 console.log(response);
-                localStorage.setItem("data", JSON.stringify(response));
-                location.href = "/search";
+
             });
     }
 

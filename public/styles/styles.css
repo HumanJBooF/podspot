@@ -26,7 +26,8 @@ body{
     border: 0;
     float: right;
     font-weight: bold;
-
+    visibility: hidden;
+    z-index: 2;
 }
 #buttonDiv img{
     max-height: 30px;
@@ -39,6 +40,32 @@ body{
     width: 65%;
     margin-left: auto;
     margin-right: auto;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
+
+#openChat{
+    float: right;
+    margin: 5px;
+    font-size: 24px;
+
+}
+
+#footerBox{
+
+    height:75px;
+    padding:0px;
+    width:100%;
+
 }
 
 .nav{
