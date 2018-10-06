@@ -19,7 +19,7 @@ function handleOpenChat() {
 
     $chatBox.attr("style", "visibility: visible;");
 
-
+};
 
 
   var handleOpenChat = function() {
