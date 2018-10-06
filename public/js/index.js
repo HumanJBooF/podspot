@@ -45,7 +45,7 @@ var handleCloseChat = function () {
 
     const validateForm = (event) => {
         event.preventDefault();
-
+        
         if (!$searchTerm.val().trim()) {    // Check if the field is not empty
             return;
         }
@@ -61,7 +61,11 @@ var handleCloseChat = function () {
     // sending the data to the back end
     const sendData = data => {
         $.post('/search/term', data)
-            .then(data);
+            .then(function(response){
+                console.log(response);
+                localStorage.setItem("data", JSON.stringify(response));
+                location.href = "/search";
+            });
     }
 
  

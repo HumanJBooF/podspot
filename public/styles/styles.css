@@ -119,3 +119,7 @@ textarea:focus {
 #loginButton{
     float: right;
 }
+
+a#loginButton{
+    margin-right: 14px;
+}
