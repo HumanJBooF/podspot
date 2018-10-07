@@ -275,3 +275,31 @@ a#loginButton {
     padding-top: 5px;
 
 }
+.reviewTitle{
+  margin-top: 50px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  text-align: center;
+  border: 3px solid rgb(51, 49, 49);
+  font-weight: bold;
+  padding: 15px;
+  overflow: hidden;
+}
+.reviewTitle img{
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  float: left;
+  padding: 15px;
+}
+
+.reviewTitle p{
+  text-align: left;
+}
+
+.reviewTitle h6{
+  text-align: left;
+}
+

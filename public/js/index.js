@@ -96,7 +96,10 @@ $(function () {
         $('.reviewTitle').show();
         console.log(`WHAT IS THIS ${data}`);
         let $reviewTitle = $('.reviewTitle');
-        $reviewTitle.append(`<p>${data}</p>`);
+        
+        
+          $reviewTitle.append(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
+        
 
       })
   })
