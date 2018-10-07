@@ -1,27 +1,29 @@
 $(function () {
 
-    //Chat variables
-    var $chatBox = $("#chatBox");
-    var $openChat = $("#openChat");
-    var $sendMessage = $("#sendMessage");
-    var $closeChat = $("#closeChat");
-    var socket = io("http://192:168:15:111:3000")
-    // these are for the bottom function ajax call
-    const $searchTerm = $('#searchBar');
-    const $searchButton = $('#searchButton');
+  $('.reviewTitle').hide();
+  $('#searchCont').show();
+  //Chat variables
+  var $chatBox = $("#chatBox");
+  var $openChat = $("#openChat");
+  var $sendMessage = $("#sendMessage");
+  var $closeChat = $("#closeChat");
+  var socket = io("http://192:168:15:111:3000")
+  // these are for the bottom function ajax call
+  const $searchTerm = $('#searchBar');
+  const $searchButton = $('#searchButton');
 
 
-  function handleSendMessage() {
+  function handleSendMessage () {
     var messageText;
 
-    $("form").submit(function() {
+    $("form").submit(function () {
       messageText = $("#messageText").val();
       socket.emit("chat message", messageText);
       console.log(messageText);
 
       return false;
     });
-    socket.on("chat message", function(msg) {
+    socket.on("chat message", function (msg) {
       $("#messageBoard").append($("<li>").text(msg));
     });
   }
@@ -32,7 +34,7 @@ $(function () {
   $chatBox.hide();
   $closeChat.hide();
 
-  function handleCloseChat() {
+  function handleCloseChat () {
     $chatBox.hide();
   }
 
@@ -54,22 +56,22 @@ $(function () {
 
   // sending the data to the back end
   const sendData = data => {
-    $.post("/", data).then(function(response) {
+    $.post("/", data).then(function (response) {
       console.log(response);
       $(".collapsible").empty();
       for (var i = 0; i < response.length; i++) {
         $(".collapsible").prepend(
           "<li><div class='collapsible-header'><img src='" +
-            response[i].logo +
-            "'>" +
-            response[i].title +
-            "<div id='add'>+</div></div><div class='collapsible-body'><p>" +
-            response[i].descript +
-            "</p><a href='" +
-            response[i].url +
-            "' target='_blank'>" +
-            response[i].url +
-            "</a><br><button class='bodyButton' id='addButton'>Add</button><button class='bodyButton' id='reviewButton' data='" + response[i].title + "'>Reviews</button></div></li>"
+          response[i].logo +
+          "'>" +
+          response[i].title +
+          "<div id='add'>+</div></div><div class='collapsible-body'><p>" +
+          response[i].descript +
+          "</p><a href='" +
+          response[i].url +
+          "' target='_blank'>" +
+          response[i].url +
+          "</a><br><button class='bodyButton' id='addButton'>Add</button><button class='bodyButton' id='reviewButton' data-descript='" + response[i].descript + "' data-logo='" + response[i].logo + "' data='" + response[i].title + "'>Reviews</button></div></li>"
         );
       }
     });
@@ -77,30 +79,26 @@ $(function () {
 
   $searchButton.on("click", validateForm); //on button click call the validateForm function
 
-  const $reviewButton = $("#reviewButton");
-  const $podTitle = $("#podTitle");
-  const $podDescript = $("#podDescript");
-  const $review = $("#review");
-
-  const validateReview = event => {
-    event.preventDefault();
-
-    if (!$review.val().trim()) {
-      return;
+  $('.collapsible').on('click', "#reviewButton", function () {
+    let title = $(this).attr('data');
+    let logo = $(this).attr('data-logo');
+    let descript = $(this).attr('data-descript')
+    let titleObj = {
+      title: title,
+      logo: logo,
+      descript: descript
     }
+    console.log(titleObj, 'TITLE OBJ')
+    $.post('/reviews/post', titleObj)
+      .then(data => {
+        $('.collapsible').hide();
+        $('#searchCont').hide();
+        $('.reviewTitle').show();
+        console.log(`WHAT IS THIS ${data}`);
+        let $reviewTitle = $('.reviewTitle');
+        $reviewTitle.append(`<p>${data}</p>`);
 
-    sendReview({
-      title: $podTitle.val().trim(),
-      descript: $podDescript.val().trim(),
-      review: $review.val().trim()
-    });
-  };
-
-  const sendReview = data => {
-    $.post("/review", data).then(data);
-  };
-
-  $searchButton.on("click", validateForm); //on button click call the validateForm function
-  $reviewButton.on("click", validateReview);
+      })
+  })
 });
 

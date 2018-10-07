@@ -1,8 +1,6 @@
 var db = require("../models");
 const podSearch = require("podcast-search");
 
-// Everything is commented out because we need to create our own database and figure out what routes we are using...
-// the commented out stuff is the basic set up we need but it will be easier once we get the database named and set up
 const routes = app => {
   app.get("/", (req, res) => {
     res.render("index");
@@ -29,18 +27,19 @@ const routes = app => {
 
   });
 
-  app.post('/', (req, res) => {
-    db.User.findOne({
-      where: {
-        id: req.user.id
-      }
-    }, data => {
-      console.log(data, 'datatatata')
-      res.render('index', { user: data })
-    })
+  app.post('/reviews/post', (req, res, _cb) => {
+    let title = req.body.title
+    let logo = req.body.logo
+    let descript = req.body.descript
+
+    let reviewObj = {
+      title: title,
+      logo: logo,
+      descript: descript
+    }
+    console.log(reviewObj, 'HELLLLOOOO')
+    res.json(reviewObj);
   })
-
-
 
 };
 

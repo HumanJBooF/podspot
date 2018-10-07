@@ -6,24 +6,18 @@ const routes = (app, passport) => {
         res.render('index');
     });
 
-    app.get('/', ensureAuthenticated, (req, res) => {
-        console.log(req.user, 'WHERE IS THIS')
-        res.render('/');
-    });
-
     app.get('/logout', (req, res) => {
         req.logout();
         res.redirect("/");
     });
 
-    app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google', {
+        scope: ['profile', 'email']
+    }));
 
-    app.get('/auth/google/callback',
-        passport.authenticate('google',
-            {
-                failureRedirect: '/404',
-                successRedirect: '/'
-            }));
+    app.get('/auth/google/callback', passport.authenticate('google'), function (req, res) {
+        res.redirect('http://localhost:3000/');
+    });
 
     // Simple route middleware to ensure user is authenticated.
     function ensureAuthenticated (req, res, next) {
@@ -32,5 +26,9 @@ const routes = (app, passport) => {
         }
         res.redirect('/404');
     }
+    app.get('/', ensureAuthenticated, (req, res) => {
+        res.render('/');
+    });
 }
+
 module.exports = routes;
