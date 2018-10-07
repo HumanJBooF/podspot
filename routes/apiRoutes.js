@@ -29,6 +29,16 @@ const routes = app => {
 
   });
 
+  app.post('/', (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    }, data => {
+      console.log(data, 'datatatata')
+      res.render('index', { user: data })
+    })
+  })
 
 
 

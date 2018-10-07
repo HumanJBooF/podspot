@@ -5,23 +5,6 @@ const db = require("../models");
 const configAuth = passport => {
 
 
-    passport.serializeUser((user, done) => {
-        console.log(`WHAT IS THE USER ID ===> ${user.id}`)
-        done(null, user.id);
-    });
-
-    passport.deserializeUser((user, done) => {
-        db.User.find({
-            where: {
-                'googleID': user.id
-            }
-        }).then(user => {
-            done(null, user);
-        }).error(err => {
-            done(err, null);
-        });
-    });
-
     passport.use(new GoogleStrategy({
         clientID: process.env.PASSPORT_CLIENT_ID,
         clientSecret: process.env.PASSPORT_SECRET,
@@ -64,5 +47,22 @@ const configAuth = passport => {
         })
     }
     ));
+
+    passport.serializeUser((user, done) => {
+        console.log(`WHAT IS THE USER ID ===> ${user.id}`)
+        done(null, user.id);
+    });
+
+    passport.deserializeUser((user, done) => {
+        db.User.find({
+            where: {
+                'googleID': user.id
+            }
+        }).then(user => {
+            done(null, user);
+        }).error(err => {
+            done(err, null);
+        });
+    });
 }
 module.exports = configAuth;
