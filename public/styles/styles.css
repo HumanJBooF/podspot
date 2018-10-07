@@ -56,14 +56,12 @@ main {
 }
 
 .page-footer {
-
   z-index: 2;
   position: fixed;
   bottom: 0;
   width: 100%;
   background-image: linear-gradient(black, rgb(53, 53, 53));
   min-height: 200px;
-
 }
 
 #footerBox {
@@ -180,18 +178,10 @@ a#loginButton {
 }
 
 .collapsible-header img {
-
   width: 150px;
   height: 150px;
   margin-right: 40px;
-
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
+  -webkit-mask-image: -webkit-gradient( linear, left top, right top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
@@ -248,34 +238,33 @@ a#loginButton {
   background-color: rgb(148, 1, 1);
 }
 
-.bodyButton{
-    margin-top: 20px;
-    margin-right: 15px;
-    border: 0;
-    background-image: linear-gradient(black, rgb(53, 53, 53));
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-
+.bodyButton {
+  margin-top: 20px;
+  margin-right: 15px;
+  border: 0;
+  background-image: linear-gradient(black, rgb(53, 53, 53));
+  color: white;
+  padding: 10px;
+  font-weight: bold;
 }
 
-.bodyButton:hover{
-    background-image: linear-gradient(rgb(49, 49, 49), rgb(88, 88, 88));
+.bodyButton:hover {
+  background-image: linear-gradient(rgb(49, 49, 49), rgb(88, 88, 88));
 }
 
-#searchResults{
-    height: 30px;
-    text-align: center;
-    width: 100%;
+#searchResults {
+  height: 30px;
+  text-align: center;
+  width: 100%;
 }
 
-#reviewLogo img{
-    margin-top:0;
-    margin-bottom: 0;
-    padding-top: 5px;
-
+#reviewLogo img {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 5px;
 }
-.reviewTitle{
+
+.reviewTitle, .hiddenForm {
   margin-top: 50px;
   width: 60%;
   margin-left: auto;
@@ -287,7 +276,13 @@ a#loginButton {
   padding: 15px;
   overflow: hidden;
 }
-.reviewTitle img{
+
+.hiddenForm {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.reviewTitle img {
   margin-left: auto;
   margin-right: auto;
   width: 200px;
@@ -295,11 +290,10 @@ a#loginButton {
   padding: 15px;
 }
 
-.reviewTitle p{
+.reviewTitle p {
   text-align: left;
 }
 
-.reviewTitle h6{
+.reviewTitle h6 {
   text-align: left;
 }
-
