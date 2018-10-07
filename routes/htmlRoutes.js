@@ -6,6 +6,11 @@ const routes = (app) => {
     res.render("index");
   });
 
+
+  app.get("/reviews", (req, res) => {
+    res.render("reviews");
+  });
+
   app.get('/login', (req, res) => {
     res.render('login');
   });
