@@ -1,12 +1,13 @@
-// require("../config/auth");
+const db = require('../models');
 
 const routes = (app, passport) => {
     app.get('/', (req, res) => {
-        res.render('index')
-
+        console.log(req.user)
+        res.render('index');
     });
 
-    app.get('/', isLoggedIn, (req, res) => {
+    app.get('/', ensureAuthenticated, (req, res) => {
+        console.log(req.user, 'WHERE IS THIS')
         res.render('/');
     });
 
@@ -17,18 +18,19 @@ const routes = (app, passport) => {
 
     app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-    app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
-        (req, res) => {
-            res.redirect('/');
-        });
-
+    app.get('/auth/google/callback',
+        passport.authenticate('google',
+            {
+                failureRedirect: '/404',
+                successRedirect: '/'
+            }));
 
     // Simple route middleware to ensure user is authenticated.
-    function isLoggedIn (req, res, next) {
+    function ensureAuthenticated (req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.redirect('/');
+        res.redirect('/404');
     }
 }
 module.exports = routes;

@@ -18,24 +18,18 @@ const db = require("./models");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(logger('dev'));
+app.use('/', express.static("public"));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(logger('dev'));
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static("public"));
 
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

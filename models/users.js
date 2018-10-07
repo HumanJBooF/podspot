@@ -21,6 +21,11 @@ module.exports = function (sequelize, DataTypes) {
         photo: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        online: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: false
         }
     });
     User.associate = models => {
