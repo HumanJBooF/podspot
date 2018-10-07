@@ -40,6 +40,9 @@ $(function () {
 
   const validateForm = event => {
     event.preventDefault();
+    $(".collapsible").show();
+    $(".reviewTitle").hide();
+    $("#searchCont").show();
 
     if (!$searchTerm.val().trim()) {
       // Check if the field is not empty
@@ -94,13 +97,9 @@ $(function () {
         $('.collapsible').hide();
         $('#searchCont').hide();
         $('.reviewTitle').show();
-        console.log(`WHAT IS THIS ${data}`);
         let $reviewTitle = $('.reviewTitle');
-        
-        
-          $reviewTitle.append(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
-        
-
+        $reviewTitle.html("");
+        $reviewTitle.append(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
       })
   })
 });
