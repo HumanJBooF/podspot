@@ -43,22 +43,25 @@ const configAuth = passport => {
                         return done(null, newUser);
                     });
                 }
+            }).catch(err => {
+                console.log(`ERROR ERROR:::: ${err}`)
             })
         })
     }
     ));
 
     passport.serializeUser((user, done) => {
-        console.log(`WHAT IS THE USER ID ===> ${user.id}`)
+        console.log(`WHO IS THE USER ===> ${user.displayName}`)
         done(null, user.id);
     });
 
-    passport.deserializeUser((user, done) => {
-        db.User.find({
+    passport.deserializeUser((id, done) => {
+        db.User.findOne({
             where: {
-                'googleID': user.id
+                "googleID": id
             }
         }).then(user => {
+            console.log(`DESERIALIZED!`)
             done(null, user);
         }).error(err => {
             done(err, null);
