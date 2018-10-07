@@ -1,5 +1,5 @@
 $(function () {
-
+  $('.hiddenForm').hide();
   $('.reviewTitle').hide();
   $('#searchCont').show();
   //Chat variables
@@ -97,9 +97,10 @@ $(function () {
         $('.collapsible').hide();
         $('#searchCont').hide();
         $('.reviewTitle').show();
+        $('.hiddenForm').show();
         let $reviewTitle = $('.reviewTitle');
         $reviewTitle.html("");
-        $reviewTitle.append(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
+        $reviewTitle.prepend(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
       })
   })
 });

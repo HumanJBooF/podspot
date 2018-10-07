@@ -25,8 +25,8 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
