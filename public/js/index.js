@@ -1,23 +1,15 @@
-$(function() {
-  //Chat variables
-  var $chatBox = $("#chatBox");
-  var $openChat = $("#openChat");
-  var $sendMessage = $("#sendMessage");
-  var $closeChat = $("#closeChat");
-  var socket = io("http://192:168:15:111:3000");
-  // these are for the bottom function ajax call
-  const $searchTerm = $("#searchBar");
-  const $searchButton = $("#searchButton");
+$(function () {
 
-  //Opens Chat box
-  $openChat.on("click", handleOpenChat);
+    //Chat variables
+    var $chatBox = $("#chatBox");
+    var $openChat = $("#openChat");
+    var $sendMessage = $("#sendMessage");
+    var $closeChat = $("#closeChat");
+    var socket = io("http://192:168:15:111:3000")
+    // these are for the bottom function ajax call
+    const $searchTerm = $('#searchBar');
+    const $searchButton = $('#searchButton');
 
-  $chatBox.attr("style", "visibility: visible;");
-  $closeChat.attr("style", "visibility: visible;");
-
-  var handleOpenChat = function() {
-    $chatBox.attr("style", "visiblility: visible;");
-  };
 
   function handleSendMessage() {
     var messageText;
@@ -51,6 +43,7 @@ $(function() {
       // Check if the field is not empty
       return;
     }
+
 
     sendData({
       term: $searchTerm // creating the object to give to the back-end
@@ -110,3 +103,4 @@ $(function() {
   $searchButton.on("click", validateForm); //on button click call the validateForm function
   $reviewButton.on("click", validateReview);
 });
+

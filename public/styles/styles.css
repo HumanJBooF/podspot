@@ -3,8 +3,6 @@ body html {
   margin: 0;
 }
 
-/* hides chat box until it is opened, and display it over the other content */
-
 body {
   background-color: rgb(148, 1, 1);
 }
@@ -58,12 +56,14 @@ main {
 }
 
 .page-footer {
+
   z-index: 2;
   position: fixed;
   bottom: 0;
   width: 100%;
   background-image: linear-gradient(black, rgb(53, 53, 53));
   min-height: 200px;
+
 }
 
 #footerBox {
@@ -180,6 +180,7 @@ a#loginButton {
 }
 
 .collapsible-header img {
+
   width: 150px;
   height: 150px;
   margin-right: 40px;
