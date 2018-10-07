@@ -22,6 +22,7 @@ body {
 #buttonDiv {
   padding: 0;
   padding: 5px;
+  margin-top: 20px;
   width: 110px;
   line-height: 30px;
   text-align: right;
@@ -73,7 +74,6 @@ main {
 
 #searchTop {
   margin: 0;
-  padding-top: 20px;
   height: 85px;
   border-bottom: 3px solid rgb(51, 49, 49);
   background-image: linear-gradient(black, rgb(53, 53, 53));
@@ -87,7 +87,6 @@ main {
 }
 
 .searchContainer {
-  padding-top: 20px;
   padding-bottom: 20px;
   color: white;
   background-image: linear-gradient(black, rgb(53, 53, 53));
@@ -267,4 +266,11 @@ a#loginButton {
     height: 30px;
     text-align: center;
     width: 100%;
+}
+
+#reviewLogo img{
+    margin-top:0;
+    margin-bottom: 0;
+    padding-top: 5px;
+
 }
