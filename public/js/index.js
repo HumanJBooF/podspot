@@ -11,7 +11,7 @@ $(function () {
   // these are for the bottom function ajax call
   const $searchTerm = $('#searchBar');
   const $searchButton = $('#searchButton');
-
+  const $addButton = $('.addReview');
 
   function handleSendMessage () {
     var messageText;
@@ -43,6 +43,7 @@ $(function () {
     $(".collapsible").show();
     $(".reviewTitle").hide();
     $("#searchCont").show();
+    $('.hiddenForm').hide();
 
     if (!$searchTerm.val().trim()) {
       // Check if the field is not empty
@@ -74,13 +75,11 @@ $(function () {
           response[i].url +
           "' target='_blank'>" +
           response[i].url +
-          "</a><br><button class='bodyButton' id='addButton'>Add</button><button class='bodyButton' id='reviewButton' data-descript='" + response[i].descript + "' data-logo='" + response[i].logo + "' data='" + response[i].title + "'>Reviews</button></div></li>"
+          "</a><br><button class='bodyButton' id='reviewButton' data-descript='" + response[i].descript + "' data-logo='" + response[i].logo + "' data='" + response[i].title + "'>Reviews</button></div></li>"
         );
       }
     });
   };
-
-  $searchButton.on("click", validateForm); //on button click call the validateForm function
 
   $('.collapsible').on('click', "#reviewButton", function () {
     let title = $(this).attr('data');
@@ -91,7 +90,7 @@ $(function () {
       logo: logo,
       descript: descript
     }
-    console.log(titleObj, 'TITLE OBJ')
+    console.log(titleObj, 'TITLE OBJ');
     $.post('/reviews/post', titleObj)
       .then(data => {
         $('.collapsible').hide();
@@ -100,8 +99,28 @@ $(function () {
         $('.hiddenForm').show();
         let $reviewTitle = $('.reviewTitle');
         $reviewTitle.html("");
-        $reviewTitle.prepend(`<h5>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
+        $reviewTitle.prepend(`<h5 class='revTitle' data='${data.title}'>${data.title}</h5><br><img src="${data.logo}"><br><h6>Description</h6><p>${data.descript}</p>`);
       })
   })
+
+  $('.hiddenForm').on('click', $addButton, (event) => {
+    event.preventDefault();
+    let $textArea = $('#textarea1').val().trim();
+    let title = $('.revTitle').attr('data');
+    let name = $('#name').val().trim();
+
+    let reviewObj = {
+      title: title,
+      text: $textArea,
+      name: name
+    }
+
+    $.post('/reviews/add', reviewObj)
+      .then(data => {
+
+      })
+  })
+
+  $searchButton.on("click", validateForm); //on button click call the validateForm function
 });
 
