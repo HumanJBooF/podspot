@@ -107,20 +107,41 @@ $(function () {
     event.preventDefault();
     let $textArea = $('#textarea1').val().trim();
     let title = $('.revTitle').attr('data');
-    let name = $('#name').val().trim();
+    let id = $('.user').val().trim();
 
     let reviewObj = {
-      title: title,
-      text: $textArea,
-      name: name
+      podTitle: title,
+      body: $textArea,
+      UserId: id
     }
 
     $.post('/reviews/add', reviewObj)
       .then(data => {
 
       })
+    $('#textarea1').val('');
   })
 
+  const userRows = (user) => {
+    let options = $('<option>');
+    options.attr('value', user.id);
+    options.text(user.displayName);
+    return options;
+  }
+
+  const userList = (data) => {
+    let rows = [];
+    data.forEach(users => {
+      rows.push(userRows(users));
+    });
+    $('.user').empty();
+    $('.user').prepend(rows);
+  }
+
+  const getUsers = () => {
+    $.get('/review/user', userList);
+  }
+  getUsers();
   $searchButton.on("click", validateForm); //on button click call the validateForm function
 });
 
