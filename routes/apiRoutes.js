@@ -2,9 +2,9 @@ var db = require("../models");
 const podSearch = require("podcast-search");
 
 const routes = app => {
-  app.get("/", (req, res) => {
-    res.render("index");
-  });
+  // app.get("/", (req, res) => {
+  //   res.render("index");
+  // });
 
   app.post("/", (req, res) => {
     let searches = req.body.term;
@@ -27,7 +27,7 @@ const routes = app => {
 
   });
 
-  app.post('/reviews/post', (req, res, _cb) => {
+  app.post('/reviews/post', (req, res) => {
     let title = req.body.title
     let logo = req.body.logo
     let descript = req.body.descript
@@ -41,6 +41,19 @@ const routes = app => {
     res.json(reviewObj);
   })
 
+  app.post('/reviews/add', (req, res) => {
+    // let createObj =
+
+    db.User.create({
+      displayName: req.body.name,
+      Review: [{
+        body: req.body.text,
+        podTitle: req.body.title
+      }]
+    }, { include: [{ model: db.Review, as: 'review' }] }).then(data => {
+      console.log(data)
+    })
+  })
 };
 
 module.exports = routes;

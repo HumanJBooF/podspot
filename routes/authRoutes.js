@@ -16,7 +16,7 @@ const routes = (app, passport) => {
     }));
 
     app.get('/auth/google/callback', passport.authenticate('google'), function (req, res) {
-        res.redirect('https://the-podspot.herokuapp.com/');
+        res.redirect('https://localhost:3000');
     });
 
     // Simple route middleware to ensure user is authenticated.

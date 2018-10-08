@@ -1,25 +1,24 @@
 module.exports = function (sequelize, DataTypes) {
     const Review = sequelize.define("Review", {
-        review: {
+        body: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]
             }
+        },
+        podTitle: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
-    });
 
-    Review.associates = models => {
+    });
+    Review.associates = function (models) {
         Review.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
-        Review.belongsTo(models.Podcast, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
     }
     return Review;
 };

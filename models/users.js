@@ -3,34 +3,22 @@ module.exports = function (sequelize, DataTypes) {
         displayName: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
         googleID: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
         },
         emails: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true,
         },
         photo: {
             type: DataTypes.STRING,
             allowNull: true
-        },
-        online: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
-            allowNull: false
         }
     });
-    User.associate = models => {
-        User.hasMany(models.Review)
-        User.hasMany(models.Podcast)
+    User.associate = function (models) {
+        User.hasMany(models.Review, { as: 'review' })
     }
     return User;
 };
