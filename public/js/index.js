@@ -1,11 +1,12 @@
 $(function () {
-
+    
     //Chat variables
     var $chatBox = $("#chatBox");
     var $openChat = $("#openChat");
     var $sendMessage = $("#sendMessage");
     var $closeChat = $("#closeChat");
     var socket = io("http://192:168:15:111:3000")
+
     // these are for the bottom function ajax call
     const $searchTerm = $('#searchBar');
     const $searchButton = $('#searchButton');
@@ -25,12 +26,12 @@ $(function () {
 
     function handleSendMessage() {
 
-        var messageText;
+        var $messageText;
 
         $('form').submit(function () {
-            messageText = $('#messageText').val()
-            socket.emit('chat message', messageText);
-            console.log(messageText);
+            $messageText = $('#messageText').val()
+            socket.emit('chat message', $messageText);
+            console.log($messageText);
 
             return false;
         });

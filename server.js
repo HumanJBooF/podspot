@@ -18,6 +18,9 @@ const db = require("./models");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+
+
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(session({
@@ -55,6 +58,23 @@ const syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+
+//Socket_io
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/public/js/index.js');
+});
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+    console.log(here);
+  });
+});
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
