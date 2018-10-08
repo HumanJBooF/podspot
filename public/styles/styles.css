@@ -304,3 +304,7 @@ a#loginButton {
   border: 1pt solid black !important;
   padding: 20px !important;
 }
+
+select {
+  display: block !important;
+}

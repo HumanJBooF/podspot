@@ -2,10 +2,6 @@ var db = require("../models");
 const podSearch = require("podcast-search");
 
 const routes = app => {
-  // app.get("/", (req, res) => {
-  //   res.render("index");
-  // });
-
   app.post("/", (req, res) => {
     let searches = req.body.term;
     let dataArray = [];
@@ -41,16 +37,18 @@ const routes = app => {
     res.json(reviewObj);
   })
 
-  app.post('/reviews/add', (req, res) => {
-    // let createObj =
+  app.get('/review/user', (req, res) => {
+    db.User.findAll({
 
-    db.User.create({
-      displayName: req.body.name,
-      Review: [{
-        body: req.body.text,
-        podTitle: req.body.title
-      }]
-    }, { include: [{ model: db.Review, as: 'review' }] }).then(data => {
+    }).then(users => {
+      res.json(users);
+    })
+  })
+
+  app.post('/reviews/add', (req, res) => {
+    let newReview = req.body
+
+    db.Review.create(newReview).then(data => {
       console.log(data)
     })
   })
