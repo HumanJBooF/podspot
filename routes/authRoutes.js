@@ -1,4 +1,3 @@
-const db = require('../models');
 
 const routes = (app, passport) => {
     app.get('/', (req, res) => {
@@ -21,7 +20,7 @@ const routes = (app, passport) => {
 
     // Simple route middleware to ensure user is authenticated.
     function ensureAuthenticated (req, res, next) {
-        if (req.isAuthenticated()) {
+        if (req.user) {
             return next();
         }
         res.redirect('/404');
